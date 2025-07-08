@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 func main() {
@@ -16,9 +17,20 @@ func main() {
 			role:  "admin",
 		},
 		statusCode: 200,
+		timestamp:  time.Now(),
+	}
+
+	// inline structure
+	tempData := struct {
+		eldapId       string
+		eldapUserName string
+	}{
+		"1221000",
+		"user123eldap",
 	}
 
 	fmt.Println(resp)
+	fmt.Println(tempData)
 }
 
 type responseStruct struct {
@@ -26,6 +38,7 @@ type responseStruct struct {
 	statusCode int
 	message    string
 	data       userData
+	timestamp  time.Time
 }
 
 type userData struct {
