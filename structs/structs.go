@@ -20,13 +20,16 @@ func main() {
 		timestamp:  time.Now(),
 	}
 
+	user := resp.data
 	// inline structure
 	tempData := struct {
-		eldapId       string
-		eldapUserName string
+		eldapId        string
+		eldapUserName  string
+		systemUserInfo userData
 	}{
 		"1221000",
 		"user123eldap",
+		user,
 	}
 
 	fmt.Println(resp)
@@ -37,7 +40,7 @@ type responseStruct struct {
 	status     int
 	statusCode int
 	message    string
-	data       userData
+	data       userData // struct embedding
 	timestamp  time.Time
 }
 
